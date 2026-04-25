@@ -15,7 +15,7 @@ export default function Reviews({ reviews }: Props) {
         />
         <div className="mt-12 grid gap-6 sm:grid-cols-2">
           {reviews.map((r, i) => (
-            <figure key={i} className="bg-surface border-2 border-border p-6">
+            <figure key={i} className="bg-surface border-2 border-border p-6 flex flex-col items-center text-center">
               <div className="text-accent text-lg" aria-label={`${r.rating} из 5`}>
                 {'★'.repeat(r.rating)}
                 <span className="text-text/20">{'★'.repeat(5 - r.rating)}</span>

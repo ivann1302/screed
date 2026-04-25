@@ -14,7 +14,7 @@ export default function Services({ services }: Props) {
         />
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {services.map((s) => (
-            <div key={s.title} className="bg-surface border-2 border-border p-6">
+            <div key={s.title} className="bg-surface border-2 border-border p-6 flex flex-col items-center text-center">
               <h3 className="font-display uppercase text-xl">{s.title}</h3>
               <p className="mt-3 text-text/70 leading-relaxed">{s.description}</p>
             </div>

@@ -40,7 +40,7 @@ export default function Cases({ cases }: Props) {
                   </span>
                 </div>
               </div>
-              <div className="p-6">
+              <div className="p-6 text-center">
                 <h3 className="font-display uppercase text-lg">{c.title}</h3>
                 {c.description && <p className="mt-3 text-text/70 leading-relaxed">{c.description}</p>}
               </div>
