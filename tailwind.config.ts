@@ -18,12 +18,19 @@ export default {
       fontFamily: {
         sans:    ["'Archivo'", 'system-ui', 'sans-serif'],
         display: ["'Archivo Black'", "'Archivo'", 'system-ui', 'sans-serif'],
+        mono:    ["'JetBrains Mono'", 'ui-monospace', 'monospace'],
       },
       // brutalist offset-shadow utilities
       boxShadow: {
         brutal:    `6px 6px 0 0 ${siteConfig.theme.shadow}`,
         brutalLg:  `8px 8px 0 0 ${siteConfig.theme.shadow}`,
         brutalSm:  `3px 3px 0 0 ${siteConfig.theme.shadow}`,
+      },
+      keyframes: {
+        marquee: {
+          from: { transform: 'translateX(0)' },
+          to:   { transform: 'translateX(-50%)' },
+        },
       },
     },
     // Brutalist override: все «прямоугольные» radii обнуляем, full оставляем для точек/FAB

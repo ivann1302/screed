@@ -36,6 +36,7 @@ export type SiteConfig = {
     subheadline: string;
     ctaText: string;
     imageUrl?: string;
+    stamp?: { lines: string[] };
   };
   leadForm: {
     backgroundImageUrl?: string;
@@ -44,7 +45,12 @@ export type SiteConfig = {
   cases: { title: string; beforeUrl: string; afterUrl: string; description?: string }[];
   reviews: { author: string; text: string; rating: number }[];
   faq: { question: string; answer: string }[];
-  about: { headline: string; bullets: string[] };
+  about: {
+    headline: string;
+    bullets: string[];
+    stats: { value: number; suffix?: string; label: string }[];
+  };
+  marquee: { items: string[] };
   pricing: {
     items: { name: string; pricePerM2: number; note?: string }[];
     rates: Record<ScreedType, number>;             // ₽/м² базовая
@@ -93,6 +99,7 @@ export const siteConfig: SiteConfig = {
     headline: 'Стяжка пола под ключ в Москве',
     subheadline: 'От 450 ₽/м². Гарантия 5 лет. Замер бесплатно.',
     ctaText: 'Получить расчёт',
+    stamp: { lines: ['ОПЫТ 10 ЛЕТ', '№ 001 · МОСКВА'] },
   },
   services: [
     { title: 'Полусухая стяжка', description: 'Механизированная укладка, готовность к ходьбе через 12 часов.' },
@@ -127,6 +134,14 @@ export const siteConfig: SiteConfig = {
       'Договор, чек, акт скрытых работ',
       'Бесплатный замер с лазерным уровнем',
     ],
+    stats: [
+      { value: 10, suffix: '+', label: 'лет опыта' },
+      { value: 200, suffix: '+', label: 'объектов сдано' },
+      { value: 5,  suffix: '',  label: 'лет гарантия' },
+    ],
+  },
+  marquee: {
+    items: ['Полусухая', 'Мокрая', 'Наливной пол', 'Армирование', 'Тёплый пол', 'Замер бесплатно', 'Гарантия 5 лет'],
   },
   pricing: {
     items: [
