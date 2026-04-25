@@ -61,7 +61,7 @@ export default function Header({ master }: Props) {
               <a
                 href={telHref}
                 aria-label={`Позвонить ${master.phone}`}
-                className="inline-flex items-center gap-2 border-2 border-bg px-3 lg:px-5 py-2 font-display uppercase tracking-wider text-xs lg:text-sm motion-safe:transition hover:bg-bg hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bg focus-visible:ring-offset-2 focus-visible:ring-offset-accent"
+                className="inline-flex items-center gap-2 h-10 border-2 border-bg px-3 lg:px-5 font-display uppercase tracking-wider text-xs lg:text-sm motion-safe:transition hover:bg-bg hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bg focus-visible:ring-offset-2 focus-visible:ring-offset-accent"
               >
                 <Phone className="w-4 h-4" strokeWidth={2.5} />
                 <span className="hidden lg:inline">{master.phone}</span>
@@ -69,7 +69,7 @@ export default function Header({ master }: Props) {
             )}
             <a
               href="#form"
-              className="inline-flex items-center border-2 border-bg bg-bg text-accent px-3 lg:px-5 py-2 font-display uppercase tracking-wider text-xs lg:text-sm motion-safe:transition hover:bg-bg/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bg focus-visible:ring-offset-2 focus-visible:ring-offset-accent"
+              className="inline-flex items-center h-10 border-2 border-bg bg-bg text-accent px-3 lg:px-5 font-display uppercase tracking-wider text-xs lg:text-sm motion-safe:transition hover:bg-bg/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bg focus-visible:ring-offset-2 focus-visible:ring-offset-accent"
             >
               Заказать стяжку
             </a>
