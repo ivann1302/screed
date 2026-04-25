@@ -6,6 +6,7 @@ import Services from '@/components/Services';
 import Pricing from '@/components/Pricing';
 import Cases from '@/components/Cases';
 import About from '@/components/About';
+import Quiz from '@/components/Quiz';
 import Reviews from '@/components/Reviews';
 import FAQ from '@/components/FAQ';
 import LeadForm from '@/components/LeadForm';
@@ -21,6 +22,7 @@ export default function App() {
       <Pricing pricing={siteConfig.pricing} />
       <Cases cases={siteConfig.cases} />
       <About about={siteConfig.about} master={siteConfig.master} />
+      <Quiz />
       <Reviews reviews={siteConfig.reviews} />
       <FAQ faq={siteConfig.faq} />
       <LeadForm />
