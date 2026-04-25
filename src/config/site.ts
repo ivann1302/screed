@@ -41,7 +41,7 @@ export type SiteConfig = {
   leadForm: {
     backgroundImageUrl?: string;
   };
-  services: { title: string; description: string }[];
+  services: { title: string; description: string; pricePerM2: number; note?: string }[];
   cases: { title: string; beforeUrl: string; afterUrl: string; description?: string }[];
   reviews: { author: string; text: string; rating: number }[];
   faq: { question: string; answer: string }[];
@@ -52,7 +52,6 @@ export type SiteConfig = {
   };
   marquee: { items: string[] };
   pricing: {
-    items: { name: string; pricePerM2: number; note?: string }[];
     rates: Record<ScreedType, number>;             // ₽/м² базовая
     thicknessMultiplier: Record<40 | 60 | 80 | 100, number>;
     extras: {
@@ -103,10 +102,10 @@ export const siteConfig: SiteConfig = {
     stamp: { lines: ['ОПЫТ 10 ЛЕТ', '№ 001 · МОСКВА'] },
   },
   services: [
-    { title: 'Полусухая стяжка', description: 'Механизированная укладка, готовность к ходьбе через 12 часов.' },
-    { title: 'Мокрая стяжка', description: 'Цементно-песчаная смесь, армирование сеткой, набор прочности 7–14 дней.' },
-    { title: 'Наливной пол', description: 'Самовыравнивающаяся смесь поверх стяжки, под финишное покрытие.' },
-    { title: 'Стяжка с тёплым полом', description: 'Заливка поверх водяного или электрического контура, контроль уклонов.' },
+    { title: 'Полусухая стяжка', description: 'Механизированная укладка, готовность к ходьбе через 12 часов.', pricePerM2: 450, note: 'от' },
+    { title: 'Мокрая стяжка', description: 'Цементно-песчаная смесь, армирование сеткой, набор прочности 7–14 дней.', pricePerM2: 600, note: 'от' },
+    { title: 'Наливной пол', description: 'Самовыравнивающаяся смесь поверх стяжки, под финишное покрытие.', pricePerM2: 750, note: 'от' },
+    { title: 'Стяжка с тёплым полом', description: 'Заливка поверх водяного или электрического контура, контроль уклонов.', pricePerM2: 530, note: 'от' },
   ],
   cases: [
     {
@@ -166,11 +165,6 @@ export const siteConfig: SiteConfig = {
     items: ['Полусухая', 'Мокрая', 'Наливной пол', 'Армирование', 'Тёплый пол', 'Замер бесплатно', 'Гарантия 5 лет'],
   },
   pricing: {
-    items: [
-      { name: 'Полусухая стяжка от 50 мм', pricePerM2: 450 },
-      { name: 'Мокрая стяжка от 50 мм', pricePerM2: 600 },
-      { name: 'Наливной пол', pricePerM2: 750, note: 'от' },
-    ],
     rates: { semidry: 450, wet: 600, selfLevel: 750 },
     thicknessMultiplier: { 40: 1, 60: 1.15, 80: 1.3, 100: 1.5 },
     extras: { reinforcement: 40, overUnderfloor: 80, demolition: 100 },

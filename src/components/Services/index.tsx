@@ -4,6 +4,8 @@ import { Trowel } from '@/components/ui/icons/Trowel';
 
 type Props = { services: SiteConfig['services'] };
 
+const fmt = (n: number) => new Intl.NumberFormat('ru-RU').format(n);
+
 export default function Services({ services }: Props) {
   return (
     <section className="bg-bg text-text py-16 sm:py-24 lg:py-32">
@@ -17,9 +19,17 @@ export default function Services({ services }: Props) {
             <div key={s.title} className="bg-surface border-2 border-border p-6 flex flex-col items-center text-center">
               <h3 className="font-display uppercase text-xl">{s.title}</h3>
               <p className="mt-3 text-text/70 leading-relaxed">{s.description}</p>
+              <div className="mt-6 pt-6 w-full border-t-2 border-border">
+                <span className="font-display text-3xl text-accent whitespace-nowrap">
+                  {s.note ? `${s.note} ` : ''}{fmt(s.pricePerM2)} ₽/м²
+                </span>
+              </div>
             </div>
           ))}
         </div>
+        <p className="mt-8 text-sm text-muted">
+          Цены ориентировочные. Точную смету пришлю после замера.
+        </p>
       </div>
     </section>
   );

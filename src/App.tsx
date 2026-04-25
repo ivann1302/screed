@@ -3,7 +3,6 @@ import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import HeroStats from '@/components/HeroStats';
 import Services from '@/components/Services';
-import Pricing from '@/components/Pricing';
 import Cases from '@/components/Cases';
 import About from '@/components/About';
 import Quiz from '@/components/Quiz';
@@ -20,7 +19,6 @@ export default function App() {
       <Hero hero={siteConfig.hero} master={siteConfig.master} />
       <HeroStats stats={siteConfig.about.stats} />
       <Services services={siteConfig.services} />
-      <Pricing pricing={siteConfig.pricing} />
       <Cases cases={siteConfig.cases} />
       <About about={siteConfig.about} master={siteConfig.master} />
       <Quiz />
