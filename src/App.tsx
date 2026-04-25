@@ -3,6 +3,7 @@ import Hero from '@/components/Hero';
 import Services from '@/components/Services';
 import Pricing from '@/components/Pricing';
 import Cases from '@/components/Cases';
+import About from '@/components/About';
 import Footer from '@/components/Footer';
 
 export default function App() {
@@ -12,6 +13,7 @@ export default function App() {
       <Services services={siteConfig.services} />
       <Pricing pricing={siteConfig.pricing} />
       <Cases cases={siteConfig.cases} />
+      <About about={siteConfig.about} master={siteConfig.master} />
       <Footer master={siteConfig.master} contacts={siteConfig.contacts} />
     </>
   );
