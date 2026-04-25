@@ -31,7 +31,7 @@ export default function Header({ master }: Props) {
   return (
     <>
       <header className="sticky top-0 z-30 bg-accent text-bg border-b-2 border-bg/20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-10 lg:px-16 h-14 sm:h-16 flex items-center justify-between gap-4">
+        <div className="mx-auto max-w-7xl px-4 sm:px-10 lg:px-16 h-14 sm:h-16 flex items-center justify-between gap-6 md:gap-8 lg:gap-12">
           {/* Brand */}
           <div className="flex flex-col leading-tight min-w-0 flex-shrink-0">
             <span className="font-display uppercase text-base sm:text-lg tracking-tight truncate">
@@ -43,7 +43,7 @@ export default function Header({ master }: Props) {
           </div>
 
           {/* Desktop: nav links */}
-          <nav className="hidden md:flex items-center gap-5 lg:gap-7">
+          <nav className="hidden md:flex items-center gap-6 lg:gap-10">
             {links.map((l) => (
               <a
                 key={l.href}
@@ -56,7 +56,7 @@ export default function Header({ master }: Props) {
           </nav>
 
           {/* Desktop: CTAs */}
-          <div className="hidden md:flex items-center gap-2 lg:gap-3 flex-shrink-0">
+          <div className="hidden md:flex items-center gap-3 flex-shrink-0">
             {telHref && (
               <a
                 href={telHref}
