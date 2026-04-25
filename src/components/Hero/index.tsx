@@ -8,9 +8,6 @@ export default function Hero({ hero, master }: Props) {
   const telHref = master.phone ? `tel:${master.phone.replace(/[^+\d]/g, '')}` : null;
   return (
     <section className="relative isolate overflow-hidden bg-bg text-text">
-      {/* Оранжевая полоса-разметка сверху */}
-      <div aria-hidden className="absolute inset-x-0 top-0 z-[2] h-1 bg-accent" />
-
       <div className="absolute inset-0">
         {hero.imageUrl ? (
           <img

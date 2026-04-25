@@ -1,4 +1,5 @@
 import { siteConfig } from '@/config/site';
+import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import Services from '@/components/Services';
 import Pricing from '@/components/Pricing';
@@ -12,6 +13,7 @@ import Footer from '@/components/Footer';
 export default function App() {
   return (
     <>
+      <Header master={siteConfig.master} />
       <Hero hero={siteConfig.hero} master={siteConfig.master} />
       <Services services={siteConfig.services} />
       <Pricing pricing={siteConfig.pricing} />
