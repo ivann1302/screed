@@ -6,7 +6,7 @@ import type { SiteConfig } from '@/config/site';
 type Props = { master: SiteConfig['master'] };
 
 const links = [
-  { href: '#calculator', label: 'Калькулятор' },
+  { href: '#quiz', label: 'Подбор стяжки' },
   { href: '#form', label: 'Заказать расчёт' },
   { href: '#cases', label: 'Наши работы' },
 ];
