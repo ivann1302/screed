@@ -45,7 +45,7 @@ export default function LeadForm() {
       <div className="mx-auto max-w-xl px-6 sm:px-10 lg:px-16">
         <div className="flex flex-col items-center text-center">
           <h2 className="font-display uppercase text-3xl sm:text-4xl lg:text-5xl tracking-tight leading-none">
-            Получить расчёт
+            Заказать бесплатную консультацию
           </h2>
         </div>
 
