@@ -23,7 +23,7 @@ export default function Reviews({ reviews }: Props) {
         />
 
         <div className="relative mt-12">
-          <div className="overflow-hidden" ref={emblaRef}>
+          <div className="overflow-hidden mx-12 sm:mx-0" ref={emblaRef}>
             <div className="flex gap-6">
               {reviews.map((r, i) => (
                 <figure
@@ -45,17 +45,17 @@ export default function Reviews({ reviews }: Props) {
             type="button"
             onClick={scrollPrev}
             aria-label="Предыдущий отзыв"
-            className="absolute left-2 sm:-left-4 lg:-left-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-accent text-bg grid place-items-center shadow-lg motion-safe:transition hover:bg-accentDark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+            className="absolute left-0 sm:-left-12 lg:-left-16 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-accent text-bg grid place-items-center shadow-lg motion-safe:transition hover:bg-accentDark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
           >
-            <ChevronLeft className="w-6 h-6" strokeWidth={3} />
+            <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={3} />
           </button>
           <button
             type="button"
             onClick={scrollNext}
             aria-label="Следующий отзыв"
-            className="absolute right-2 sm:-right-4 lg:-right-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-accent text-bg grid place-items-center shadow-lg motion-safe:transition hover:bg-accentDark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+            className="absolute right-0 sm:-right-12 lg:-right-16 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-accent text-bg grid place-items-center shadow-lg motion-safe:transition hover:bg-accentDark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
           >
-            <ChevronRight className="w-6 h-6" strokeWidth={3} />
+            <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={3} />
           </button>
         </div>
       </div>
