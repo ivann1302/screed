@@ -1,5 +1,5 @@
-import { ViteSSG } from 'vite-ssg/single-page';
+import { ViteReactSSG } from 'vite-react-ssg/single-page';
 import App from './App';
 import './styles/index.css';
 
-export const createApp = ViteSSG(App);
+export const createRoot = ViteReactSSG(<App />);

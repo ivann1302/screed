@@ -9,7 +9,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite-ssg build",
+    "build": "vite-react-ssg build",
     "preview": "vite preview",
     "test": "vitest",
     "test:run": "vitest run",
@@ -42,7 +42,7 @@
     "tailwindcss": "^3.4.19",
     "typescript": "^5.9.3",
     "vite": "^8.0.10",
-    "vite-ssg": "^28.3.0",
+    "vite-react-ssg": "^0.9.1-beta.1",
     "vitest": "^3.2.4"
   }
 }

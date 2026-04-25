@@ -9,6 +9,7 @@ export default defineConfig({
   },
   ssgOptions: {
     script: 'async',
-    formatting: 'minify',
+    formatting: 'none',
+    rootContainerId: 'app',
   },
 });
