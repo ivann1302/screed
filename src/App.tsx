@@ -6,6 +6,7 @@ import Cases from '@/components/Cases';
 import About from '@/components/About';
 import Reviews from '@/components/Reviews';
 import FAQ from '@/components/FAQ';
+import LeadForm from '@/components/LeadForm';
 import Footer from '@/components/Footer';
 
 export default function App() {
@@ -18,6 +19,7 @@ export default function App() {
       <About about={siteConfig.about} master={siteConfig.master} />
       <Reviews reviews={siteConfig.reviews} />
       <FAQ faq={siteConfig.faq} />
+      <LeadForm />
       <Footer master={siteConfig.master} contacts={siteConfig.contacts} />
     </>
   );

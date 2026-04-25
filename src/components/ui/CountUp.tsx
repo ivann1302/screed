@@ -20,7 +20,7 @@ export function CountUp({ target, suffix = '', label, duration = 1500 }: Props) 
           const start = performance.now();
           const tick = (now: number) => {
             const t = Math.min(1, (now - start) / duration);
-            const eased = 1 - Math.pow(1 - t, 3); // easeOutCubic
+            const eased = 1 - Math.pow(1 - t, 3);
             setVal(Math.round(eased * target));
             if (t < 1) requestAnimationFrame(tick);
           };
@@ -34,11 +34,11 @@ export function CountUp({ target, suffix = '', label, duration = 1500 }: Props) 
   }, [target, duration]);
 
   return (
-    <div ref={ref} className="border-t-[3px] border-accent pt-2">
-      <div className="font-display text-4xl sm:text-5xl leading-none">
-        {val}{suffix && <span className="text-accent">{suffix}</span>}
+    <div ref={ref} className="bg-accent text-bg p-6 sm:p-8 flex flex-col items-center text-center">
+      <div className="font-display text-5xl sm:text-6xl lg:text-7xl leading-none">
+        {val}{suffix}
       </div>
-      <div className="text-xs uppercase tracking-widest text-muted mt-2">{label}</div>
+      <div className="mt-3 text-xs uppercase tracking-widest opacity-80">{label}</div>
     </div>
   );
 }
