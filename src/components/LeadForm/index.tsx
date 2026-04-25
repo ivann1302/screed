@@ -41,7 +41,7 @@ export default function LeadForm() {
   }
 
   return (
-    <section id="form" className="bg-accent text-bg py-16 sm:py-24 lg:py-32">
+    <section id="form" className="bg-accent text-bg py-16 sm:py-24 lg:py-32 scroll-mt-16">
       <div className="mx-auto max-w-xl px-6 sm:px-10 lg:px-16">
         <div className="flex flex-col items-center text-center">
           <div className="border-2 border-bg w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center">
