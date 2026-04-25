@@ -4,6 +4,7 @@ import Services from '@/components/Services';
 import Pricing from '@/components/Pricing';
 import Cases from '@/components/Cases';
 import About from '@/components/About';
+import Reviews from '@/components/Reviews';
 import Footer from '@/components/Footer';
 
 export default function App() {
@@ -14,6 +15,7 @@ export default function App() {
       <Pricing pricing={siteConfig.pricing} />
       <Cases cases={siteConfig.cases} />
       <About about={siteConfig.about} master={siteConfig.master} />
+      <Reviews reviews={siteConfig.reviews} />
       <Footer master={siteConfig.master} contacts={siteConfig.contacts} />
     </>
   );
