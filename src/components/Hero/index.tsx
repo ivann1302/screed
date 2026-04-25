@@ -1,7 +1,6 @@
 import type { SiteConfig } from '@/config/site';
 import { Button } from '@/components/ui/Button';
 import { Stamp } from '@/components/ui/Stamp';
-import { DimensionLine } from '@/components/ui/DimensionLine';
 
 type Props = { hero: SiteConfig['hero']; master: SiteConfig['master'] };
 
@@ -60,7 +59,6 @@ export default function Hero({ hero, master }: Props) {
               {master.phone}
             </a>
           )}
-          <DimensionLine label="CTA-001" />
         </div>
       </div>
     </section>

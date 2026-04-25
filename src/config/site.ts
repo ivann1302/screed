@@ -99,7 +99,7 @@ export const siteConfig: SiteConfig = {
     headline: 'Стяжка пола под ключ в Москве',
     subheadline: 'От 450 ₽/м². Гарантия 5 лет. Замер бесплатно.',
     ctaText: 'Получить расчёт',
-    imageUrl: 'https://picsum.photos/seed/screed-hero/1920/1080',
+    imageUrl: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1920&q=80',
     stamp: { lines: ['ОПЫТ 10 ЛЕТ', '№ 001 · МОСКВА'] },
   },
   services: [
