@@ -30,6 +30,7 @@ export default function Quiz() {
         _hp: '',
       });
       setDone(contact);
+      try { sessionStorage.setItem('leadSubmitted', '1'); } catch {}
     } catch {
       setServerError('Не удалось отправить. Позвоните: ' + siteConfig.master.phone);
     } finally {

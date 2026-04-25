@@ -11,6 +11,7 @@ import Reviews from '@/components/Reviews';
 import FAQ from '@/components/FAQ';
 import LeadForm from '@/components/LeadForm';
 import Footer from '@/components/Footer';
+import ConsultationBanner from '@/components/ConsultationBanner';
 
 export default function App() {
   return (
@@ -27,6 +28,7 @@ export default function App() {
       <FAQ faq={siteConfig.faq} />
       <LeadForm />
       <Footer master={siteConfig.master} contacts={siteConfig.contacts} />
+      <ConsultationBanner />
     </>
   );
 }

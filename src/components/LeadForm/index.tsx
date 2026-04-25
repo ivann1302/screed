@@ -35,6 +35,7 @@ export default function LeadForm() {
     try {
       await postLead({ type: 'form', contact: data, _hp: '' });
       setDone(data);
+      try { sessionStorage.setItem('leadSubmitted', '1'); } catch {}
     } catch {
       setServerError('Не удалось отправить. Позвоните напрямую: ' + siteConfig.master.phone);
     }
