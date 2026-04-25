@@ -2,6 +2,7 @@ import { siteConfig } from '@/config/site';
 import Hero from '@/components/Hero';
 import Services from '@/components/Services';
 import Pricing from '@/components/Pricing';
+import Footer from '@/components/Footer';
 
 export default function App() {
   return (
@@ -9,6 +10,7 @@ export default function App() {
       <Hero hero={siteConfig.hero} master={siteConfig.master} />
       <Services services={siteConfig.services} />
       <Pricing pricing={siteConfig.pricing} />
+      <Footer master={siteConfig.master} contacts={siteConfig.contacts} />
     </>
   );
 }
