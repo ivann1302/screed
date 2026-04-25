@@ -101,11 +101,19 @@ export default function Header({ master }: Props) {
           open ? 'translate-x-0' : 'translate-x-full pointer-events-none',
         )}
       >
-        {/* Top bar inside drawer (matches header height so the close button aligns with the burger) */}
-        <div className="h-14 sm:h-16 flex items-center px-4 sm:px-10 border-b-2 border-border">
+        {/* Top bar inside drawer (matches header height) */}
+        <div className="h-14 sm:h-16 flex items-center justify-between gap-4 px-4 sm:px-10 border-b-2 border-border">
           <span className="font-display uppercase text-lg tracking-tight truncate text-accent">
             {master.name}
           </span>
+          <button
+            type="button"
+            onClick={() => setOpen(false)}
+            aria-label="Закрыть меню"
+            className="border-2 border-accent p-2 motion-safe:transition hover:bg-accent hover:text-bg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+          >
+            <X className="w-6 h-6" strokeWidth={2.5} />
+          </button>
         </div>
 
         <nav className="flex-1 overflow-y-auto px-4 sm:px-10 py-6 flex flex-col">
