@@ -26,25 +26,48 @@ export default function Header({ master }: Props) {
   return (
     <header className="sticky top-0 z-30 bg-accent text-bg border-b-2 border-bg/20">
       <div className="mx-auto max-w-7xl px-4 sm:px-10 lg:px-16 h-14 sm:h-16 flex items-center justify-between gap-4">
-        <div className="flex flex-col leading-tight min-w-0">
+        {/* Brand */}
+        <div className="flex flex-col leading-tight min-w-0 flex-shrink-0">
           <span className="font-display uppercase text-base sm:text-lg tracking-tight truncate">
             {master.name}
           </span>
-          <span className="text-[10px] sm:text-xs uppercase tracking-widest opacity-80">
+          <span className="hidden lg:inline text-[10px] sm:text-xs uppercase tracking-widest opacity-80">
             Стяжка пола · {master.city}
           </span>
         </div>
 
-        {/* Desktop: phone CTA */}
-        {telHref && (
+        {/* Desktop: nav links */}
+        <nav className="hidden md:flex items-center gap-5 lg:gap-7">
+          {links.map((l) => (
+            <a
+              key={l.href}
+              href={l.href}
+              className="font-display uppercase tracking-wider text-xs lg:text-sm motion-safe:transition hover:opacity-70 underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bg focus-visible:ring-offset-2 focus-visible:ring-offset-accent"
+            >
+              {l.label}
+            </a>
+          ))}
+        </nav>
+
+        {/* Desktop: CTAs */}
+        <div className="hidden md:flex items-center gap-2 lg:gap-3 flex-shrink-0">
+          {telHref && (
+            <a
+              href={telHref}
+              className="inline-flex items-center gap-2 border-2 border-bg px-3 lg:px-5 py-2 font-display uppercase tracking-wider text-xs lg:text-sm motion-safe:transition hover:bg-bg hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bg focus-visible:ring-offset-2 focus-visible:ring-offset-accent"
+              aria-label={`Позвонить ${master.phone}`}
+            >
+              <Phone className="w-4 h-4" strokeWidth={2.5} />
+              <span className="hidden lg:inline">{master.phone}</span>
+            </a>
+          )}
           <a
-            href={telHref}
-            className="hidden md:inline-flex items-center gap-2 border-2 border-bg px-3 sm:px-5 py-2 font-display uppercase tracking-wider text-xs sm:text-sm motion-safe:transition hover:bg-bg hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bg focus-visible:ring-offset-2 focus-visible:ring-offset-accent"
+            href="#form"
+            className="inline-flex items-center bg-bg text-accent px-3 lg:px-5 py-2 font-display uppercase tracking-wider text-xs lg:text-sm motion-safe:transition hover:bg-bg/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bg focus-visible:ring-offset-2 focus-visible:ring-offset-accent"
           >
-            <Phone className="w-4 h-4" strokeWidth={2.5} />
-            <span>{master.phone}</span>
+            Заказать стяжку
           </a>
-        )}
+        </div>
 
         {/* Mobile: burger toggle */}
         <button
