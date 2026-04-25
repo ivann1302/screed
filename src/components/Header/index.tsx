@@ -8,7 +8,7 @@ type Props = { master: SiteConfig['master'] };
 const links = [
   { href: '#calculator', label: 'Калькулятор' },
   { href: '#form', label: 'Заказать расчёт' },
-  { href: '#faq', label: 'Частые вопросы' },
+  { href: '#cases', label: 'Наши работы' },
 ];
 
 export default function Header({ master }: Props) {
