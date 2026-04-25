@@ -34,11 +34,11 @@ export function CountUp({ target, suffix = '', label, duration = 1500 }: Props) 
   }, [target, duration]);
 
   return (
-    <div ref={ref} className="bg-accent text-bg p-6 sm:p-8 flex flex-col items-center text-center">
-      <div className="font-display text-5xl sm:text-6xl lg:text-7xl leading-none">
+    <div ref={ref} className="p-6 sm:p-8 flex flex-col items-center text-center">
+      <div className="font-display text-5xl sm:text-6xl lg:text-7xl leading-none text-accent">
         {val}{suffix}
       </div>
-      <div className="mt-3 text-xs uppercase tracking-widest opacity-80">{label}</div>
+      <div className="mt-3 text-xs uppercase tracking-widest text-muted">{label}</div>
     </div>
   );
 }

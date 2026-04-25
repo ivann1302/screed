@@ -159,6 +159,7 @@ export const siteConfig: SiteConfig = {
       { value: 10, suffix: '+', label: 'лет опыта' },
       { value: 200, suffix: '+', label: 'объектов сдано' },
       { value: 5,  suffix: '',  label: 'лет гарантия' },
+      { value: 0,  suffix: ' ₽', label: 'стоимость выезда' },
     ],
   },
   marquee: {

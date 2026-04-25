@@ -1,7 +1,6 @@
 import { HardHat } from 'lucide-react';
 import type { SiteConfig } from '@/config/site';
 import { SectionIndex } from '@/components/ui/SectionIndex';
-import { CountUp } from '@/components/ui/CountUp';
 
 type Props = { about: SiteConfig['about']; master: SiteConfig['master'] };
 
@@ -23,14 +22,6 @@ export default function About({ about, master }: Props) {
                 </li>
               ))}
             </ul>
-
-            {about.stats.length > 0 && (
-              <div className="mt-10 grid grid-cols-3 gap-4 sm:gap-6">
-                {about.stats.map((s) => (
-                  <CountUp key={s.label} target={s.value} suffix={s.suffix} label={s.label} />
-                ))}
-              </div>
-            )}
           </div>
 
           {master.photoUrl && (
