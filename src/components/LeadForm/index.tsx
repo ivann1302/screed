@@ -42,19 +42,15 @@ export default function LeadForm() {
   }
 
   return (
-    <section id="form" className="bg-accent text-bg py-16 sm:py-24 lg:py-32 scroll-mt-16">
+    <section id="form" className="bg-accent text-bg py-12 sm:py-16 lg:py-24 scroll-mt-16">
       <div className="mx-auto max-w-xl px-6 sm:px-10 lg:px-16">
         <div className="flex flex-col items-center text-center">
           <div className="border-2 border-bg w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center">
             <Send className="w-10 h-10 sm:w-12 sm:h-12" strokeWidth={2.5} />
           </div>
-          <div className="mt-5 text-xs uppercase tracking-widest opacity-70">Раздел</div>
-          <h2 className="mt-3 font-display uppercase text-3xl sm:text-4xl lg:text-5xl tracking-tight leading-none">
+          <h2 className="mt-5 font-display uppercase text-3xl sm:text-4xl lg:text-5xl tracking-tight leading-none">
             Получить расчёт
           </h2>
-          <p className="mt-4 max-w-md opacity-85">
-            Перезвоним и бесплатно рассчитаем стоимость работ по вашему объекту.
-          </p>
         </div>
 
         {done ? (
@@ -120,13 +116,6 @@ export default function LeadForm() {
                 Имя (необязательно)
               </span>
               <input className={inputCls} autoComplete="given-name" {...register('name')} />
-            </label>
-
-            <label className="block">
-              <span className="mb-2 block text-xs font-bold uppercase tracking-widest opacity-80">
-                Комментарий (необязательно)
-              </span>
-              <textarea rows={3} className={inputCls + ' resize-y'} {...register('comment')} />
             </label>
 
             <button
