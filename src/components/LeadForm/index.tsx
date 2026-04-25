@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Send } from 'lucide-react';
 import { contactSchema, type Contact } from '@/lib/schemas';
 import { postLead } from '@/lib/lead';
 import { LeadSuccess } from '@/components/LeadSuccess';
@@ -45,10 +44,7 @@ export default function LeadForm() {
     <section id="form" className="bg-accent text-bg py-12 sm:py-16 lg:py-24 scroll-mt-16">
       <div className="mx-auto max-w-xl px-6 sm:px-10 lg:px-16">
         <div className="flex flex-col items-center text-center">
-          <div className="border-2 border-bg w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center">
-            <Send className="w-10 h-10 sm:w-12 sm:h-12" strokeWidth={2.5} />
-          </div>
-          <h2 className="mt-5 font-display uppercase text-3xl sm:text-4xl lg:text-5xl tracking-tight leading-none">
+          <h2 className="font-display uppercase text-3xl sm:text-4xl lg:text-5xl tracking-tight leading-none">
             Получить расчёт
           </h2>
         </div>
