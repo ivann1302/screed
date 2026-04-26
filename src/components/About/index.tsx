@@ -6,7 +6,7 @@ type Props = { about: SiteConfig['about']; master: SiteConfig['master'] };
 
 export default function About({ about, master }: Props) {
   return (
-    <section className="bg-bg text-text py-16 sm:py-24 lg:py-32">
+    <section className="bg-bg text-text py-16 sm:py-20 lg:py-24">
       <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-16">
         <SectionIndex
           icon={<HardHat className="w-10 h-10 sm:w-12 sm:h-12" strokeWidth={2.5} />}

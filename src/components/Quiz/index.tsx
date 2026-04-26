@@ -39,7 +39,7 @@ export default function Quiz() {
   }
 
   return (
-    <section id="quiz" className="bg-bg text-text py-16 sm:py-24 lg:py-32 scroll-mt-16">
+    <section id="quiz" className="bg-bg text-text py-16 sm:py-20 lg:py-24 scroll-mt-16">
       <div className="mx-auto max-w-2xl px-6 sm:px-10 lg:px-16">
         <SectionIndex
           icon={<Sparkles className="w-10 h-10 sm:w-12 sm:h-12" strokeWidth={2.5} />}

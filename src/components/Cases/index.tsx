@@ -7,7 +7,7 @@ type Props = { cases: SiteConfig['cases'] };
 export default function Cases({ cases }: Props) {
   if (cases.length === 0) return null;
   return (
-    <section id="cases" className="bg-bg text-text py-16 sm:py-24 lg:py-32 scroll-mt-16">
+    <section id="cases" className="bg-bg text-text py-16 sm:py-20 lg:py-24 scroll-mt-16">
       <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-16">
         <SectionIndex
           icon={<Camera className="w-10 h-10 sm:w-12 sm:h-12" strokeWidth={2.5} />}
