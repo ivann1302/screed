@@ -42,6 +42,7 @@ export type SiteConfig = {
     backgroundImageUrl?: string;
   };
   services: { title: string; description: string; pricePerM2: number; note?: string }[];
+  whyUs: { title: string; description: string; imageUrl: string }[];
   cases: { title: string; beforeUrl: string; afterUrl: string; description?: string }[];
   reviews: { author: string; text: string; rating: number }[];
   faq: { question: string; answer: string }[];
@@ -106,6 +107,28 @@ export const siteConfig: SiteConfig = {
     { title: 'Мокрая стяжка', description: 'Цементно-песчаная смесь, армирование сеткой, набор прочности 7–14 дней.', pricePerM2: 600, note: 'от' },
     { title: 'Наливной пол', description: 'Самовыравнивающаяся смесь поверх стяжки, под финишное покрытие.', pricePerM2: 750, note: 'от' },
     { title: 'Стяжка с тёплым полом', description: 'Заливка поверх водяного или электрического контура, контроль уклонов.', pricePerM2: 530, note: 'от' },
+  ],
+  whyUs: [
+    {
+      title: 'Свои бригады',
+      description: 'Работаем своим штатом, без субподрядчиков. Каждый мастер — наш, за качество отвечаю лично.',
+      imageUrl: 'https://picsum.photos/seed/why1/600/450',
+    },
+    {
+      title: 'Нераздутый штат экономит ваш бюджет',
+      description: 'Без офисных надстроек и менеджерского слоя. Платите за работу, а не за чужую зарплату.',
+      imageUrl: 'https://picsum.photos/seed/why2/600/450',
+    },
+    {
+      title: 'Прозрачная смета без скрытых надбавок',
+      description: 'Цена фиксируется после замера и не меняется по ходу работ. Никаких «всплыло — доплатите».',
+      imageUrl: 'https://picsum.photos/seed/why3/600/450',
+    },
+    {
+      title: 'Сдаём в срок — полусухая за 1 день',
+      description: 'Укладываем за смену, ходить можно через 12 часов. Сроки фиксируем в договоре.',
+      imageUrl: 'https://picsum.photos/seed/why4/600/450',
+    },
   ],
   cases: [
     {
