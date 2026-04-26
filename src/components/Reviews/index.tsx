@@ -1,13 +1,20 @@
-import { useCallback } from 'react';
+import { useCallback, useRef } from 'react';
 import { MessageSquareQuote, ChevronLeft, ChevronRight } from 'lucide-react';
 import useEmblaCarousel from 'embla-carousel-react';
+import Autoplay from 'embla-carousel-autoplay';
 import type { SiteConfig } from '@/config/site';
 import { SectionIndex } from '@/components/ui/SectionIndex';
 
 type Props = { reviews: SiteConfig['reviews'] };
 
 export default function Reviews({ reviews }: Props) {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'start' });
+  const autoplay = useRef(
+    Autoplay({ delay: 5000, stopOnInteraction: false, stopOnMouseEnter: true }),
+  );
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { loop: true, align: 'start' },
+    [autoplay.current],
+  );
 
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
