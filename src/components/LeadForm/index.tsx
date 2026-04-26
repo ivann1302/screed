@@ -96,7 +96,7 @@ export default function LeadForm() {
                       aria-checked={active}
                       onClick={() => setValue('channel', o.value)}
                       className={
-                        'border-2 px-3 py-2 text-sm font-display uppercase tracking-wider motion-safe:transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bg ' +
+                        'border-2 px-2 py-2 text-xs font-display uppercase tracking-wider motion-safe:transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bg ' +
                         (active ? 'bg-bg text-accent border-bg font-bold' : 'border-bg/40 hover:border-bg')
                       }
                     >
