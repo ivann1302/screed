@@ -23,8 +23,8 @@ export default function App() {
       <About about={siteConfig.about} master={siteConfig.master} />
       <Quiz />
       <Reviews reviews={siteConfig.reviews} />
-      <FAQ faq={siteConfig.faq} />
       <LeadForm />
+      <FAQ faq={siteConfig.faq} />
       <Footer master={siteConfig.master} contacts={siteConfig.contacts} />
       <ConsultationBanner />
     </>

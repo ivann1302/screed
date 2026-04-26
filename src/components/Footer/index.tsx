@@ -8,7 +8,7 @@ export default function Footer({ master, contacts }: Props) {
 
   return (
     <footer className="bg-bg text-text border-t-2 border-border py-12">
-      <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-16 grid gap-8 sm:grid-cols-2">
+      <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-16 grid gap-8 sm:grid-cols-2 text-center sm:text-left">
         <div>
           <div className="font-display uppercase text-xl">{master.name}</div>
           <div className="mt-2 text-sm text-muted">Стяжка пола · {master.city}</div>
@@ -21,7 +21,7 @@ export default function Footer({ master, contacts }: Props) {
             </a>
           )}
         </div>
-        <div className="flex flex-wrap gap-x-6 gap-y-2 sm:justify-end items-start">
+        <div className="flex flex-wrap gap-x-6 gap-y-2 justify-center sm:justify-end items-start">
           {contacts.whatsapp && (
             <a
               href={contacts.whatsapp}
@@ -56,7 +56,7 @@ export default function Footer({ master, contacts }: Props) {
           )}
         </div>
       </div>
-      <div className="mt-10 mx-auto max-w-7xl px-6 sm:px-10 lg:px-16 flex flex-wrap items-center justify-between gap-3 text-xs text-muted">
+      <div className="mt-10 mx-auto max-w-7xl px-6 sm:px-10 lg:px-16 flex flex-col sm:flex-row items-center sm:justify-between gap-3 text-xs text-muted text-center sm:text-left">
         <div>© {year} {master.name}. Все права защищены.</div>
         <a href="/privacy/" className="hover:text-text/80 underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
           Политика конфиденциальности
