@@ -6,7 +6,7 @@ const phoneRegex = /^\+7\s?\(?\d{3}\)?[\s-]?\d{3}[\s-]?\d{2}[\s-]?\d{2}$/;
 
 export const contactSchema = z.object({
   phone: z.string().regex(phoneRegex, 'Введите телефон в формате +7 (999) 123-45-67'),
-  channel: z.enum(['whatsapp', 'telegram', 'call', 'any']),
+  channel: z.enum(['whatsapp', 'telegram', 'call', 'max', 'any']),
   name: z.string().min(1).max(80).optional(),
   comment: z.string().max(500).optional(),
 });

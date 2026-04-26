@@ -1,4 +1,4 @@
-export type Channel = 'whatsapp' | 'telegram' | 'call' | 'any';
+export type Channel = 'whatsapp' | 'telegram' | 'call' | 'max' | 'any';
 export type ScreedType = 'semidry' | 'wet' | 'selfLevel';
 export type ScreedTypeWithUnsure = ScreedType | 'unsure';
 

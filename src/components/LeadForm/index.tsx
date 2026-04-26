@@ -13,7 +13,7 @@ const channelOptions = [
   { value: 'whatsapp' as const, label: 'WhatsApp' },
   { value: 'telegram' as const, label: 'Telegram' },
   { value: 'call' as const, label: 'Звонок' },
-  { value: 'any' as const, label: 'Без разницы' },
+  { value: 'max' as const, label: 'MAX' },
 ];
 
 const inputCls =

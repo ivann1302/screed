@@ -4,6 +4,7 @@ const channelText: Record<Channel, string> = {
   whatsapp: 'в WhatsApp',
   telegram: 'в Telegram',
   call: 'звонком',
+  max: 'в MAX',
   any: 'удобным способом',
 };
 

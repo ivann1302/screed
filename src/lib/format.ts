@@ -1,7 +1,7 @@
 import type { LeadPayload } from '@/lib/schemas';
 
 const channelLabel: Record<string, string> = {
-  whatsapp: 'WhatsApp', telegram: 'Telegram', call: 'звонок', any: 'без разницы',
+  whatsapp: 'WhatsApp', telegram: 'Telegram', call: 'звонок', max: 'MAX', any: 'без разницы',
 };
 const roomTypeLabel: Record<string, string> = {
   apartment: 'Квартира', house: 'Дом / коттедж', commercial: 'Офис / коммерция', other: 'Другое',
