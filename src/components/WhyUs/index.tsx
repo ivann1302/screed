@@ -16,7 +16,7 @@ const iconMap: Record<IconKey, ComponentType<SVGProps<SVGSVGElement>>> = {
 
 export default function WhyUs({ whyUs }: Props) {
   return (
-    <section className="bg-accent text-bg py-12 sm:py-14 lg:py-16">
+    <section className="bg-blue-700 text-text py-12 sm:py-14 lg:py-16">
       <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-16">
         <SectionIndex
           icon={<BadgeCheck className="w-10 h-10 sm:w-12 sm:h-12" strokeWidth={2.5} />}
@@ -26,10 +26,10 @@ export default function WhyUs({ whyUs }: Props) {
           {whyUs.map((w) => {
             const Icon = iconMap[w.icon];
             return (
-              <div key={w.title} className="border-2 border-bg p-5 flex flex-col items-center text-center">
-                <Icon className="w-10 h-10 sm:w-12 sm:h-12 text-bg" strokeWidth={2.5} />
+              <div key={w.title} className="border-2 border-text p-5 flex flex-col items-center text-center">
+                <Icon className="w-10 h-10 sm:w-12 sm:h-12 text-text" strokeWidth={2.5} />
                 <h3 className="mt-4 font-display uppercase text-base sm:text-lg">{w.title}</h3>
-                <p className="mt-2 text-sm text-bg/75 leading-relaxed">{w.description}</p>
+                <p className="mt-2 text-sm text-text/75 leading-relaxed">{w.description}</p>
               </div>
             );
           })}
