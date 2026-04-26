@@ -40,7 +40,7 @@ export default function Quiz() {
 
   return (
     <section id="quiz" className="bg-bg text-text py-16 sm:py-20 lg:py-24 scroll-mt-16">
-      <div className="mx-auto max-w-2xl px-6 sm:px-10 lg:px-16">
+      <div className="mx-auto max-w-2xl lg:max-w-4xl px-6 sm:px-10 lg:px-16">
         <SectionIndex
           icon={<Sparkles className="w-10 h-10 sm:w-12 sm:h-12" strokeWidth={2.5} />}
           title="Подбор стяжки"
@@ -49,7 +49,7 @@ export default function Quiz() {
         {done ? (
           <div className="mt-10"><LeadSuccess masterName={siteConfig.master.name} channel={done.channel} /></div>
         ) : (
-          <div className="mt-10 bg-surface border-2 border-border p-6 sm:p-8">
+          <div className="mt-10 bg-surface border-2 border-border p-6 sm:p-8 lg:p-12">
             <div className="h-1 w-full overflow-hidden bg-border">
               <div className="h-full bg-accent motion-safe:transition-[width] duration-300" style={{ width: `${(state.step - 1) * 25}%` }} />
             </div>
