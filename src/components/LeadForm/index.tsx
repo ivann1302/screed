@@ -97,7 +97,9 @@ export default function LeadForm() {
                       onClick={() => setValue('channel', o.value)}
                       className={
                         'border-2 px-2 py-2 text-xs font-display uppercase tracking-wider motion-safe:transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bg ' +
-                        (active ? 'bg-bg text-accent border-bg font-bold' : 'border-bg/40 hover:border-bg')
+                        (active
+                          ? 'bg-accent text-bg border-bg font-bold'
+                          : 'bg-bg text-text border-bg hover:bg-bg/85')
                       }
                     >
                       {o.label}
