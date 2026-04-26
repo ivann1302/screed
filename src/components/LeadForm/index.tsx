@@ -17,7 +17,7 @@ const channelOptions = [
 ];
 
 const inputCls =
-  'w-full bg-bg/15 border-2 border-bg/30 text-bg placeholder:text-bg/50 px-4 py-3 outline-none focus-visible:border-bg focus-visible:ring-2 focus-visible:ring-bg/40 motion-safe:transition';
+  'w-full bg-bg border-2 border-bg text-text placeholder:text-text/50 px-4 py-3 outline-none focus-visible:border-text focus-visible:ring-2 focus-visible:ring-text/40 motion-safe:transition';
 
 export default function LeadForm() {
   const [done, setDone] = useState<Contact | null>(null);
@@ -73,7 +73,7 @@ export default function LeadForm() {
                 placeholder="+7 (___) ___-__-__"
                 autoComplete="tel"
                 aria-invalid={!!errors.phone}
-                className={inputCls + (errors.phone ? ' border-bg' : '')}
+                className={inputCls + (errors.phone ? ' border-text' : '')}
                 {...register('phone')}
               />
               {errors.phone?.message && (
