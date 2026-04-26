@@ -4,6 +4,7 @@ import Hero from '@/components/Hero';
 import HeroStats from '@/components/HeroStats';
 import Services from '@/components/Services';
 import WhyUs from '@/components/WhyUs';
+import { ConstructionTape } from '@/components/ui/ConstructionTape';
 import Cases from '@/components/Cases';
 import About from '@/components/About';
 import Quiz from '@/components/Quiz';
@@ -23,6 +24,7 @@ export default function App() {
       <Cases cases={siteConfig.cases} />
       <About about={siteConfig.about} master={siteConfig.master} />
       <WhyUs whyUs={siteConfig.whyUs} />
+      <ConstructionTape />
       <Quiz />
       <Reviews reviews={siteConfig.reviews} />
       <LeadForm />
