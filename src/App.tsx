@@ -20,9 +20,9 @@ export default function App() {
       <Hero hero={siteConfig.hero} master={siteConfig.master} />
       <HeroStats stats={siteConfig.about.stats} />
       <Services services={siteConfig.services} />
-      <WhyUs whyUs={siteConfig.whyUs} />
       <Cases cases={siteConfig.cases} />
       <About about={siteConfig.about} master={siteConfig.master} />
+      <WhyUs whyUs={siteConfig.whyUs} />
       <Quiz />
       <Reviews reviews={siteConfig.reviews} />
       <LeadForm />
