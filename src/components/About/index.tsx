@@ -13,19 +13,8 @@ export default function About({ about, master }: Props) {
           title={about.headline}
         />
         <div className="mt-12 grid gap-10 lg:grid-cols-12 lg:gap-12 items-start">
-          <div className="lg:col-span-7">
-            <ul className="space-y-4">
-              {about.bullets.map((b) => (
-                <li key={b} className="flex gap-3 text-lg text-text/85">
-                  <span aria-hidden className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-accent" />
-                  {b}
-                </li>
-              ))}
-            </ul>
-          </div>
-
           {master.photoUrl && (
-            <div className="lg:col-span-5">
+            <div className="lg:col-span-5 lg:order-1">
               <img
                 src={master.photoUrl}
                 alt={master.name}
@@ -33,6 +22,14 @@ export default function About({ about, master }: Props) {
               />
             </div>
           )}
+
+          <div className="lg:col-span-7 lg:order-2 space-y-5">
+            {about.bio.map((p, i) => (
+              <p key={i} className="text-lg text-text/85 leading-relaxed">
+                {p}
+              </p>
+            ))}
+          </div>
         </div>
       </div>
     </section>

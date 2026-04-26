@@ -47,7 +47,7 @@ export type SiteConfig = {
   faq: { question: string; answer: string }[];
   about: {
     headline: string;
-    bullets: string[];
+    bio: string[];
     stats: { value: number; suffix?: string; label: string }[];
   };
   marquee: { items: string[] };
@@ -68,7 +68,7 @@ export const siteConfig: SiteConfig = {
     phone: '+7 (999) 000-00-00',
     city: 'Москва',
     experienceYears: 10,
-    photoUrl: undefined,
+    photoUrl: 'https://picsum.photos/seed/master/600/800',
   },
   contacts: {
     whatsapp: 'https://wa.me/79990000000',
@@ -148,11 +148,10 @@ export const siteConfig: SiteConfig = {
   ],
   about: {
     headline: 'О мастере',
-    bullets: [
-      '10 лет опыта в стяжке пола',
-      'Лично работаю на каждом объекте, без субподряда',
-      'Договор, чек, акт скрытых работ',
-      'Бесплатный замер с лазерным уровнем',
+    bio: [
+      'Меня зовут Иван. 10 лет занимаюсь стяжкой пола в Москве и области. За плечами больше 200 объектов — квартиры, дома, офисы, коммерческие помещения.',
+      'На каждый объект приезжаю лично, без субподряда и «бригад на день». Что показал на замере — то и сделаю по итогу. Контролирую процесс от приготовления смеси до проверки финального уровня.',
+      'Работаю по договору, выдаю чек самозанятого, по сложным объектам — акт скрытых работ. Гарантия 5 лет. Если по моей вине что-то отслоится или треснет — переделаю бесплатно.',
     ],
     stats: [
       { value: 10, suffix: '+', label: 'лет опыта' },
