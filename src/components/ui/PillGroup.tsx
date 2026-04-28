@@ -3,7 +3,7 @@ import clsx from 'clsx';
 type Option<V extends string | number> = { value: V; label: string };
 
 type Props<V extends string | number> = {
-  options: Option<V>[];
+  options: readonly Option<V>[];
   value: V | undefined;
   onChange: (v: V) => void;
   ariaLabel: string;

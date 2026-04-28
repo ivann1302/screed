@@ -14,9 +14,9 @@ const button = cva(
     variants: {
       variant: {
         // primary: оранжевая заливка + стрелка через clip-path. padding-right больше чем left, чтобы текст не наезжал на стрелку.
-        primary:   'bg-accent text-white hover:bg-accentDark',
+        primary:   'bg-accent text-onAccent hover:bg-accentDark',
         // secondary: прозрачный с толстой оранжевой рамкой
-        secondary: 'bg-transparent border-[3px] border-accent text-accent hover:bg-accent hover:text-white',
+        secondary: 'bg-transparent border-[3px] border-accent text-accent hover:bg-accent hover:text-onAccent',
         // ghost: бордер-минимал, без заливки
         ghost:     'border-2 border-border text-text hover:bg-surface',
       },
@@ -43,7 +43,7 @@ export const Button = forwardRef<HTMLButtonElement, Props>(function Button(
     return (
       <span
         className={clsx(
-          'relative inline-block focus-within:outline-none focus-within:ring-2 focus-within:ring-accent focus-within:ring-offset-2 focus-within:ring-offset-bg',
+          'relative inline-block',
           block && 'w-full',
         )}
       >

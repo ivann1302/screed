@@ -1,8 +1,8 @@
-import type { SiteConfig } from '@/config/site';
+import { uiText, type SiteConfig } from '@/config/site';
 
-type Props = { master: SiteConfig['master']; contacts: SiteConfig['contacts'] };
+type Props = { master: SiteConfig['master']; project: SiteConfig['project']; contacts: SiteConfig['contacts'] };
 
-export default function Footer({ master, contacts }: Props) {
+export default function Footer({ master, project, contacts }: Props) {
   const year = new Date().getFullYear();
   const telHref = master.phone ? `tel:${master.phone.replace(/[^+\d]/g, '')}` : null;
 
@@ -11,7 +11,7 @@ export default function Footer({ master, contacts }: Props) {
       <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-16 grid gap-8 sm:grid-cols-2 text-center sm:text-left">
         <div>
           <div className="font-display uppercase text-xl">{master.name}</div>
-          <div className="mt-2 text-sm text-muted">Стяжка пола · {master.city}</div>
+          <div className="mt-2 text-sm text-muted">{project.serviceShortName} · {master.city}</div>
           {telHref && (
             <a
               href={telHref}
@@ -21,45 +21,48 @@ export default function Footer({ master, contacts }: Props) {
             </a>
           )}
         </div>
-        <div className="flex flex-wrap gap-x-6 gap-y-2 justify-center sm:justify-end items-start">
-          {contacts.whatsapp && (
+        <div className="flex flex-wrap gap-4 justify-center sm:justify-end items-center">
+          {contacts.max && (
             <a
-              href={contacts.whatsapp}
-              className="font-display uppercase text-sm tracking-wider hover:text-accent motion-safe:transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+              href={contacts.max}
+              aria-label="MAX"
+              className="inline-flex h-12 w-12 items-center justify-center motion-safe:transition hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
             >
-              WhatsApp
+              <img src="/icons/Max-icon.svg" alt="" aria-hidden="true" className="h-12 w-12 object-contain" />
             </a>
           )}
           {contacts.telegram && (
             <a
               href={contacts.telegram}
-              className="font-display uppercase text-sm tracking-wider hover:text-accent motion-safe:transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+              aria-label="Telegram"
+              className="inline-flex h-12 w-12 items-center justify-center motion-safe:transition hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
             >
-              Telegram
+              <img src="/icons/tg-icon.png" alt="" aria-hidden="true" className="h-12 w-12 object-contain" />
             </a>
           )}
-          {contacts.vk && (
+          {contacts.whatsapp && (
             <a
-              href={contacts.vk}
-              className="font-display uppercase text-sm tracking-wider hover:text-accent motion-safe:transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+              href={contacts.whatsapp}
+              aria-label="WhatsApp"
+              className="inline-flex h-12 w-12 items-center justify-center motion-safe:transition hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
             >
-              VK
-            </a>
-          )}
-          {contacts.email && (
-            <a
-              href={`mailto:${contacts.email}`}
-              className="font-display uppercase text-sm tracking-wider hover:text-accent motion-safe:transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
-            >
-              Email
+              <img src="/icons/whatsappIcon.png" alt="" aria-hidden="true" className="h-12 w-12 object-contain" />
             </a>
           )}
         </div>
       </div>
       <div className="mt-10 mx-auto max-w-7xl px-6 sm:px-10 lg:px-16 flex flex-col sm:flex-row items-center sm:justify-between gap-3 text-xs text-muted text-center sm:text-left">
-        <div>© {year} {master.name}. Все права защищены.</div>
+        <div>© {year} {master.name}. {uiText.footer.rights}</div>
         <a href="/privacy/" className="hover:text-text/80 underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
-          Политика конфиденциальности
+          {uiText.common.privacyFull}
+        </a>
+      </div>
+      <div className="mt-8 flex justify-center px-6 sm:hidden">
+        <a
+          href="#form"
+          className="inline-flex w-full max-w-xs items-center justify-center bg-accent px-5 py-3 font-display text-sm uppercase tracking-wider text-bg motion-safe:transition hover:bg-accentDark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+        >
+          {uiText.cta.orderScreed}
         </a>
       </div>
     </footer>

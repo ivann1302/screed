@@ -1,5 +1,5 @@
 import { Camera } from 'lucide-react';
-import type { SiteConfig } from '@/config/site';
+import { sectionTitles, uiText, type SiteConfig } from '@/config/site';
 import { SectionIndex } from '@/components/ui/SectionIndex';
 
 type Props = { cases: SiteConfig['cases'] };
@@ -11,43 +11,46 @@ export default function Cases({ cases }: Props) {
       <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-16">
         <SectionIndex
           icon={<Camera className="w-10 h-10 sm:w-12 sm:h-12" strokeWidth={2.5} />}
-          title="Наши работы"
+          title={sectionTitles.cases}
         />
-        <div className="mt-12 grid gap-8 sm:grid-cols-2">
+        <div className="mt-12 grid gap-6 lg:grid-cols-2">
           {cases.map((c) => (
-            <article key={c.title} className="bg-surface border-2 border-border overflow-hidden">
-              <div className="grid grid-cols-2 border-b-2 border-border">
-                <div className="relative">
-                  <img
-                    src={c.beforeUrl}
-                    alt={`${c.title} — до`}
-                    loading="lazy"
-                    className="h-full w-full object-cover aspect-[4/3]"
-                  />
-                  <span className="absolute left-2 top-2 bg-bg/80 px-2 py-1 text-xs font-display uppercase tracking-wider">
-                    До
-                  </span>
-                </div>
-                <div className="relative">
-                  <img
-                    src={c.afterUrl}
-                    alt={`${c.title} — после`}
-                    loading="lazy"
-                    className="h-full w-full object-cover aspect-[4/3]"
-                  />
-                  <span className="absolute left-2 top-2 bg-accent text-bg px-2 py-1 text-xs font-display uppercase tracking-wider">
-                    После
-                  </span>
-                </div>
+            <article key={c.title} className="grid overflow-hidden border-2 border-border bg-surface md:grid-cols-[0.95fr_1.05fr]">
+              <div className="relative min-h-64 border-b-2 border-border md:border-b-0 md:border-r-2">
+                <img
+                  src={c.imageUrl}
+                  alt={c.title}
+                  loading="lazy"
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+                <span className="absolute left-3 top-3 bg-accent px-3 py-1.5 text-xs font-display uppercase tracking-wider text-bg">
+                  {c.area}
+                </span>
               </div>
-              <div className="p-6 text-center">
-                <h3 className="font-display uppercase text-lg">{c.title}</h3>
-                {c.description && <p className="mt-3 text-text/70 leading-relaxed">{c.description}</p>}
+              <div className="flex min-h-64 flex-col p-6 sm:p-7">
+                <div className="text-xs font-semibold uppercase tracking-widest text-accent">
+                  {c.location}
+                </div>
+                <h3 className="mt-3 font-display uppercase text-2xl leading-tight">{c.title}</h3>
+                <p className="mt-4 text-text/70 leading-relaxed">{c.description}</p>
+                <dl className="mt-auto grid grid-cols-2 gap-3 pt-6">
+                  <CaseMetric label={uiText.cases.workLabel} value={c.workType} />
+                  <CaseMetric label={uiText.cases.durationLabel} value={c.duration} />
+                </dl>
               </div>
             </article>
           ))}
         </div>
       </div>
     </section>
+  );
+}
+
+function CaseMetric({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="border-2 border-border bg-bg/45 p-3">
+      <dt className="text-[10px] font-semibold uppercase tracking-widest text-muted">{label}</dt>
+      <dd className="mt-1 font-display uppercase text-sm text-text">{value}</dd>
+    </div>
   );
 }

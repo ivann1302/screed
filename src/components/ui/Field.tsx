@@ -11,7 +11,7 @@ export function Field({
     <label className="block">
       <span className="mb-2 block text-xs font-semibold uppercase tracking-wider text-muted">{label}</span>
       {children}
-      {error && <span className="mt-1 block text-xs text-red-400">{error}</span>}
+      {error && <span className="mt-1 block text-xs text-danger">{error}</span>}
       {!error && hint && <span className="mt-1 block text-xs text-muted">{hint}</span>}
     </label>
   );
@@ -21,12 +21,12 @@ type InputProps = InputHTMLAttributes<HTMLInputElement> & { invalid?: boolean };
 export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
   { invalid, className, ...rest }, ref,
 ) {
-  return <input ref={ref} className={clsx(inputCls, invalid && 'border-red-400/60', className)} {...rest} />;
+  return <input ref={ref} className={clsx(inputCls, invalid && 'border-danger/60', className)} {...rest} />;
 });
 
 type TextareaProps = TextareaHTMLAttributes<HTMLTextAreaElement> & { invalid?: boolean };
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(function Textarea(
   { invalid, className, ...rest }, ref,
 ) {
-  return <textarea ref={ref} className={clsx(inputCls, 'resize-y', invalid && 'border-red-400/60', className)} {...rest} />;
+  return <textarea ref={ref} className={clsx(inputCls, 'resize-y', invalid && 'border-danger/60', className)} {...rest} />;
 });

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { MessageCircle } from 'lucide-react';
 import { useScrollProgress } from './useScrollTrigger';
 import { ConsultationCard } from './ConsultationCard';
+import { uiText } from '@/config/site';
 
 const SHOWN_KEY = 'consultationShown';
 const LEAD_KEY = 'leadSubmitted';
@@ -55,7 +56,7 @@ export default function ConsultationBanner() {
     <>
       {fabVisible && (
         <button
-          aria-label="Открыть форму консультации"
+          aria-label={uiText.consultation.fabAria}
           onClick={() => setOpen(true)}
           className="fixed bottom-6 right-6 z-40 grid h-14 w-14 place-items-center rounded-full bg-accent text-bg shadow-2xl shadow-accent/40 motion-safe:transition hover:bg-accentDark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
         >
@@ -70,7 +71,7 @@ export default function ConsultationBanner() {
       {success && (
         <div role="status" className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none">
           <div className="bg-accent text-bg px-6 py-4 font-display uppercase tracking-wider shadow-xl border-2 border-bg">
-            ✓ Заявка принята
+            {uiText.consultation.successToast}
           </div>
         </div>
       )}

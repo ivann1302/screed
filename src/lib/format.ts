@@ -1,59 +1,61 @@
 import type { LeadPayload } from '@/lib/schemas';
+import {
+  areaLabels,
+  channelLabels,
+  leadTypeLabels,
+  roomTypeLabels,
+  screedTypeLabels,
+  timingLabels,
+  uiText,
+} from '@/config/site';
 
-const channelLabel: Record<string, string> = {
-  whatsapp: 'WhatsApp', telegram: 'Telegram', call: 'звонок', max: 'MAX', any: 'без разницы',
-};
-const roomTypeLabel: Record<string, string> = {
-  apartment: 'Квартира', house: 'Дом / коттедж', commercial: 'Офис / коммерция', other: 'Другое',
-};
-const areaLabel: Record<string, string> = {
-  lt30: 'до 30 м²', '30-60': '30–60 м²', '60-100': '60–100 м²', gt100: '100+ м²',
-};
-const screedLabel: Record<string, string> = {
-  semidry: 'Полусухая', wet: 'Мокрая', selfLevel: 'Наливной пол', unsure: 'Не знает, нужна консультация',
-};
-const timingLabel: Record<string, string> = {
-  thisMonth: 'В этом месяце', within3m: 'В течение 3 мес.', later: 'Позже', looking: 'Просто смотрит',
-};
-const extraLabel: Record<string, string> = {
-  reinforcement: 'Армирование', overUnderfloor: 'Поверх тёплого пола', demolition: 'Демонтаж старой',
-};
-const typeLabel: Record<LeadPayload['type'], string> = {
-  quiz: 'КВИЗ', calculator: 'КАЛЬКУЛЯТОР', form: 'ФОРМА', consultation: 'КОНСУЛЬТАЦИЯ',
-};
+const yesNo = (v: boolean | undefined) =>
+  v ? uiText.calculator.summaryLabels.yes : uiText.calculator.summaryLabels.no;
 
 const fmtRub = (n: number) =>
   new Intl.NumberFormat('ru-RU', { maximumFractionDigits: 0 }).format(n);
 
 export function formatLeadText(p: LeadPayload): string {
   const lines: string[] = [];
-  lines.push(`🔔 Новый лид · ${typeLabel[p.type]}`);
+  const labels = uiText.leadMessage;
+  lines.push(`${labels.newLeadPrefix} · ${leadTypeLabels[p.type]}`);
   lines.push('');
-  if (p.contact.name) lines.push(`Имя: ${p.contact.name}`);
-  lines.push(`Телефон: ${p.contact.phone}`);
-  lines.push(`Канал: ${channelLabel[p.contact.channel] ?? p.contact.channel}`);
-  if (p.contact.comment) lines.push(`Комментарий: ${p.contact.comment}`);
+  if (p.contact.name) lines.push(`${labels.name}: ${p.contact.name}`);
+  lines.push(`${labels.phone}: ${p.contact.phone}`);
+  lines.push(`${labels.channel}: ${channelLabels[p.contact.channel] ?? p.contact.channel}`);
+  if (p.contact.comment) lines.push(`${labels.comment}: ${p.contact.comment}`);
 
   if (p.type === 'quiz') {
     lines.push('');
-    lines.push(`Помещение: ${roomTypeLabel[p.answers.roomType]}`);
-    lines.push(`Площадь: ${areaLabel[p.answers.area]}`);
-    lines.push(`Тип стяжки: ${screedLabel[p.answers.screedType]}`);
-    lines.push(`Сроки: ${timingLabel[p.answers.timing]}`);
+    lines.push(`${labels.roomType}: ${roomTypeLabels[p.answers.roomType]}`);
+    lines.push(`${labels.area}: ${areaLabels[p.answers.area]}`);
+    lines.push(`${labels.screedType}: ${screedTypeLabels[p.answers.screedType]}`);
+    lines.push(`${labels.timing}: ${timingLabels[p.answers.timing]}`);
   }
 
   if (p.type === 'calculator') {
     lines.push('');
-    lines.push(`Площадь: ${p.params.area} м²`);
-    lines.push(`Тип: ${screedLabel[p.params.type]} ${p.params.thickness} мм`);
-    if (p.params.extras.length) {
-      lines.push(`Дополнительно: ${p.params.extras.map(e => extraLabel[e]).join(', ')}`);
+    lines.push(labels.paramsTitle);
+    lines.push(labels.tableHeader);
+    lines.push(labels.tableDivider);
+    lines.push(`${labels.area.padEnd(19)}| ${p.params.area} м²`);
+    lines.push(`${labels.screedType.padEnd(19)}| ${screedTypeLabels[p.params.type]}`);
+    lines.push(`${labels.thickness.padEnd(19)}| ${p.params.thickness} мм`);
+    lines.push(`${labels.reinforcement.padEnd(19)}| ${yesNo(p.params.extras.includes('reinforcement'))}`);
+    lines.push(`${labels.overUnderfloor.padEnd(19)}| ${yesNo(p.params.extras.includes('overUnderfloor'))}`);
+    lines.push(`${labels.materialsIncluded.padEnd(19)}| ${yesNo(p.params.materialsIncluded)}`);
+    if (p.params.extras.includes('demolition')) lines.push(`${labels.demolition.padEnd(19)}| Да`);
+
+    if (p.estimatedPrice !== undefined && p.breakdown) {
+      lines.push('');
+      lines.push(`${labels.estimate}: ~${fmtRub(p.estimatedPrice)} ₽`);
+      lines.push(`  ${labels.work}: ${fmtRub(p.breakdown.work)} ₽`);
+      lines.push(`  ${labels.extras}: ${fmtRub(p.breakdown.extras)} ₽`);
+      lines.push(`  ${labels.materials}: ${fmtRub(p.breakdown.materials)} ₽`);
+    } else {
+      lines.push('');
+      lines.push(labels.manualCalculation);
     }
-    lines.push('');
-    lines.push(`Ориентир: ~${fmtRub(p.estimatedPrice)} ₽`);
-    lines.push(`  работа: ${fmtRub(p.breakdown.work)} ₽`);
-    lines.push(`  доп: ${fmtRub(p.breakdown.extras)} ₽`);
-    lines.push(`  материалы (ориентир): ${fmtRub(p.breakdown.materials)} ₽`);
   }
 
   return lines.join('\n');

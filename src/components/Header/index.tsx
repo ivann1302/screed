@@ -1,17 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Menu, X, Phone } from 'lucide-react';
 import clsx from 'clsx';
-import type { SiteConfig } from '@/config/site';
+import { uiText, type SiteConfig } from '@/config/site';
 
-type Props = { master: SiteConfig['master'] };
+type Props = { master: SiteConfig['master']; project: SiteConfig['project']; assets: SiteConfig['assets'] };
+type HeaderLink = SiteConfig['navLinks'][number];
 
-const links = [
-  { href: '#quiz', label: 'Подбор стяжки' },
-  { href: '#form', label: 'Заказать расчёт' },
-  { href: '#cases', label: 'Наши работы' },
-];
-
-export default function Header({ master }: Props) {
+export default function Header({ master, project, assets, links }: Props & { links: HeaderLink[] }) {
   const telHref = master.phone ? `tel:${master.phone.replace(/[^+\d]/g, '')}` : null;
   const [open, setOpen] = useState(false);
 
@@ -33,13 +28,21 @@ export default function Header({ master }: Props) {
       <header className="sticky top-0 z-30 bg-accent text-bg border-b-2 border-bg/20">
         <div className="mx-auto max-w-7xl px-4 sm:px-10 lg:px-16 h-14 sm:h-16 flex items-center justify-between gap-6 md:gap-8 lg:gap-12">
           {/* Brand */}
-          <div className="flex flex-col leading-tight min-w-0 flex-shrink-0">
-            <span className="font-display uppercase text-base sm:text-lg tracking-tight truncate">
-              {master.name}
-            </span>
-            <span className="hidden lg:inline text-[10px] sm:text-xs uppercase tracking-widest opacity-80">
-              Стяжка пола · {master.city}
-            </span>
+          <div className="flex min-w-0 flex-shrink-0 items-center gap-3">
+            <img
+              src={assets.logo}
+              alt=""
+              aria-hidden="true"
+              className="h-9 w-9 shrink-0 object-contain sm:h-10 sm:w-10"
+            />
+            <div className="flex min-w-0 flex-col leading-tight">
+              <span className="font-display uppercase text-base sm:text-lg tracking-tight truncate">
+                {master.name}
+              </span>
+              <span className="hidden lg:inline text-[10px] sm:text-xs uppercase tracking-widest opacity-80">
+                {project.serviceShortName} · {master.city}
+              </span>
+            </div>
           </div>
 
           {/* Desktop: nav links */}
@@ -71,7 +74,7 @@ export default function Header({ master }: Props) {
               href="#form"
               className="inline-flex items-center h-10 border-2 border-bg bg-bg text-accent px-3 lg:px-5 font-display uppercase tracking-wider text-xs lg:text-sm motion-safe:transition hover:bg-bg/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bg focus-visible:ring-offset-2 focus-visible:ring-offset-accent"
             >
-              Заказать стяжку
+              {uiText.cta.orderScreed}
             </a>
           </div>
 
@@ -103,9 +106,17 @@ export default function Header({ master }: Props) {
       >
         {/* Top bar inside drawer (matches header height) */}
         <div className="h-14 sm:h-16 flex items-center justify-between gap-4 px-4 sm:px-10 border-b-2 border-border">
-          <span className="font-display uppercase text-lg tracking-tight truncate text-accent">
-            {master.name}
-          </span>
+          <div className="flex min-w-0 items-center gap-3">
+            <img
+              src={assets.logo}
+              alt=""
+              aria-hidden="true"
+              className="h-9 w-9 shrink-0 object-contain"
+            />
+            <span className="font-display uppercase text-lg tracking-tight truncate text-accent">
+              {master.name}
+            </span>
+          </div>
           <button
             type="button"
             onClick={() => setOpen(false)}
@@ -145,7 +156,7 @@ export default function Header({ master }: Props) {
             onClick={() => setOpen(false)}
             className="inline-flex items-center justify-center bg-accent text-bg px-5 py-3 font-display uppercase tracking-wider text-sm motion-safe:transition hover:bg-accentDark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
           >
-            Заказать стяжку
+            {uiText.cta.orderScreed}
           </a>
         </div>
       </div>

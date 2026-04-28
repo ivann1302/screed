@@ -1,5 +1,5 @@
 import { HelpCircle } from 'lucide-react';
-import type { SiteConfig } from '@/config/site';
+import { sectionTitles, type SiteConfig } from '@/config/site';
 import { SectionIndex } from '@/components/ui/SectionIndex';
 
 type Props = { faq: SiteConfig['faq'] };
@@ -11,7 +11,7 @@ export default function FAQ({ faq }: Props) {
       <div className="mx-auto max-w-3xl px-6 sm:px-10 lg:px-16">
         <SectionIndex
           icon={<HelpCircle className="w-10 h-10 sm:w-12 sm:h-12" strokeWidth={2.5} />}
-          title="Частые вопросы"
+          title={sectionTitles.faq}
         />
         <div className="mt-12 border-2 border-border">
           {faq.map((q, i) => (

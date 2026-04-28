@@ -7,7 +7,7 @@ const phoneRegex = /^\+7\s?\(?\d{3}\)?[\s-]?\d{3}[\s-]?\d{2}[\s-]?\d{2}$/;
 export const contactSchema = z.object({
   phone: z.string().regex(phoneRegex, 'Введите телефон в формате +7 (999) 123-45-67'),
   channel: z.enum(['whatsapp', 'telegram', 'call', 'max', 'any']),
-  name: z.string().min(1).max(80).optional(),
+  name: z.string().max(80).optional(),
   comment: z.string().max(500).optional(),
 });
 
@@ -21,8 +21,9 @@ export const quizAnswersSchema = z.object({
 export const calcParamsSchema = z.object({
   area: z.number().positive().max(10000),
   type: z.enum(['semidry', 'wet', 'selfLevel']),
-  thickness: z.union([z.literal(40), z.literal(60), z.literal(80), z.literal(100)]),
+  thickness: z.number().positive().max(300),
   extras: z.array(z.enum(['reinforcement', 'overUnderfloor', 'demolition'])),
+  materialsIncluded: z.boolean().optional(),
 });
 
 export const priceBreakdownSchema = z.object({
@@ -33,7 +34,14 @@ export const priceBreakdownSchema = z.object({
 
 export const leadPayloadSchema = z.discriminatedUnion('type', [
   z.object({ type: z.literal('quiz'),         answers: quizAnswersSchema, contact: contactSchema, _hp: z.string().optional() }),
-  z.object({ type: z.literal('calculator'),   params: calcParamsSchema, estimatedPrice: z.number().nonnegative(), breakdown: priceBreakdownSchema, contact: contactSchema, _hp: z.string().optional() }),
+  z.object({
+    type: z.literal('calculator'),
+    params: calcParamsSchema,
+    estimatedPrice: z.number().nonnegative().optional(),
+    breakdown: priceBreakdownSchema.optional(),
+    contact: contactSchema,
+    _hp: z.string().optional(),
+  }),
   z.object({ type: z.literal('form'),         contact: contactSchema, _hp: z.string().optional() }),
   z.object({ type: z.literal('consultation'), contact: contactSchema, _hp: z.string().optional() }),
 ]);

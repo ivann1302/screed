@@ -8,12 +8,17 @@ export default {
       colors: {
         accent:     siteConfig.theme.accent,
         accentDark: siteConfig.theme.accentDark,
+        onAccent:   siteConfig.theme.onAccent,
         bg:         siteConfig.theme.bg,
+        bgDark:     siteConfig.theme.bgDark,
         surface:    siteConfig.theme.surface,
         text:       siteConfig.theme.text,
         muted:      siteConfig.theme.muted,
         border:     siteConfig.theme.border,
         shadow:     siteConfig.theme.shadow,
+        danger:     siteConfig.theme.danger,
+        overlay:    siteConfig.theme.overlay,
+        heroGlow:   siteConfig.theme.heroGlow,
       },
       fontFamily: {
         sans:    ["'Archivo'", 'system-ui', 'sans-serif'],

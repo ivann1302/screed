@@ -1,18 +1,12 @@
 import { PillGroup } from '@/components/ui/PillGroup';
-
-const opts = [
-  { value: 'thisMonth', label: 'В этом месяце' },
-  { value: 'within3m', label: 'В течение 3 мес.' },
-  { value: 'later', label: 'Позже' },
-  { value: 'looking', label: 'Просто смотрю' },
-];
+import { quizOptions, uiText } from '@/config/site';
 
 export default function QuizStep4({ onAnswer }: { onAnswer: (v: string) => void }) {
   return (
     <div>
-      <h3 className="font-display uppercase text-2xl sm:text-3xl tracking-tight">Когда планируете?</h3>
+      <h3 className="font-display uppercase text-2xl sm:text-3xl tracking-tight">{uiText.quiz.timingTitle}</h3>
       <div className="mt-6">
-        <PillGroup options={opts} value={undefined} onChange={onAnswer} ariaLabel="Сроки" layout="grid-2" />
+        <PillGroup options={quizOptions.timing} value={undefined} onChange={onAnswer} ariaLabel={uiText.quiz.timingAria} layout="grid-2" />
       </div>
     </div>
   );

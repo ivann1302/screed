@@ -2,9 +2,9 @@ import type { SiteConfig } from '@/config/site';
 import { Button } from '@/components/ui/Button';
 import { Stamp } from '@/components/ui/Stamp';
 
-type Props = { hero: SiteConfig['hero']; master: SiteConfig['master'] };
+type Props = { hero: SiteConfig['hero']; master: SiteConfig['master']; minAreaM2: number; theme: SiteConfig['theme'] };
 
-export default function Hero({ hero, master }: Props) {
+export default function Hero({ hero, master, minAreaM2, theme }: Props) {
   const telHref = master.phone ? `tel:${master.phone.replace(/[^+\d]/g, '')}` : null;
   return (
     <section className="relative isolate overflow-hidden bg-bg text-text">
@@ -13,14 +13,18 @@ export default function Hero({ hero, master }: Props) {
           <img
               src={hero.imageUrl}
               alt=""
-              className="absolute inset-0 h-full w-full object-cover"
+              className="absolute inset-0 h-full w-full object-cover object-left-top"
               style={{ filter: 'grayscale(1) contrast(1.1)' }}
             />
         ) : (
-          <div className="absolute inset-0 bg-gradient-to-br from-bg to-black" />
+          <div className="absolute inset-0 bg-gradient-to-br from-bg to-bgDark" />
         )}
         <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-bg/95 via-bg/80 to-bg/55" />
-        <div aria-hidden className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(234,88,12,0.16),transparent_60%)]" />
+        <div
+          aria-hidden
+          className="absolute inset-0"
+          style={{ background: `radial-gradient(ellipse at top right, ${theme.heroGlow}, transparent 60%)` }}
+        />
       </div>
 
       {hero.stamp && (
@@ -42,6 +46,9 @@ export default function Hero({ hero, master }: Props) {
         </h1>
         <p className="mt-6 max-w-2xl text-lg sm:text-xl text-pretty text-text/75">
           {hero.subheadline}
+        </p>
+        <p className="mt-3 max-w-2xl text-sm sm:text-base font-semibold uppercase tracking-wider text-accent">
+          Берём в работу объекты от {minAreaM2} м²
         </p>
 
         <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">

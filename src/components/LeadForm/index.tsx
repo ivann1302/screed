@@ -4,17 +4,10 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { contactSchema, type Contact } from '@/lib/schemas';
 import { postLead } from '@/lib/lead';
 import { LeadSuccess } from '@/components/LeadSuccess';
-import { siteConfig } from '@/config/site';
+import { calculatorContactChannelOptions, DEFAULT_CONTACT_CHANNEL, siteConfig, uiText } from '@/config/site';
 
 const formSchema = contactSchema;
 type FormData = Contact;
-
-const channelOptions = [
-  { value: 'whatsapp' as const, label: 'WhatsApp' },
-  { value: 'telegram' as const, label: 'Telegram' },
-  { value: 'call' as const, label: 'Звонок' },
-  { value: 'max' as const, label: 'MAX' },
-];
 
 const inputCls =
   'w-full bg-bg border-2 border-bg text-text placeholder:text-text/50 px-4 py-3 outline-none focus-visible:border-text focus-visible:ring-2 focus-visible:ring-text/40 motion-safe:transition';
@@ -25,7 +18,7 @@ export default function LeadForm() {
   const { register, handleSubmit, setValue, watch, formState: { errors, isSubmitting } } =
     useForm<FormData>({
       resolver: zodResolver(formSchema),
-      defaultValues: { channel: 'whatsapp' },
+      defaultValues: { channel: DEFAULT_CONTACT_CHANNEL },
     });
   const channel = watch('channel');
 
@@ -36,7 +29,7 @@ export default function LeadForm() {
       setDone(data);
       try { sessionStorage.setItem('leadSubmitted', '1'); } catch {}
     } catch {
-      setServerError('Не удалось отправить. Позвоните напрямую: ' + siteConfig.master.phone);
+      setServerError(uiText.leadForm.errorPrefix + siteConfig.master.phone);
     }
   }
 
@@ -45,7 +38,7 @@ export default function LeadForm() {
       <div className="mx-auto max-w-xl px-6 sm:px-10 lg:px-16">
         <div className="flex flex-col items-center text-center">
           <h2 className="font-display uppercase text-3xl sm:text-4xl lg:text-5xl tracking-tight leading-none">
-            Заказать бесплатную консультацию
+            {uiText.leadForm.title}
           </h2>
         </div>
 
@@ -66,11 +59,11 @@ export default function LeadForm() {
 
             <label className="block">
               <span className="mb-2 block text-xs font-bold uppercase tracking-widest opacity-80">
-                Телефон
+                {uiText.leadForm.phoneLabel}
               </span>
               <input
                 type="tel"
-                placeholder="+7 (___) ___-__-__"
+                placeholder={uiText.common.phonePlaceholder}
                 autoComplete="tel"
                 aria-invalid={!!errors.phone}
                 className={inputCls + (errors.phone ? ' border-text' : '')}
@@ -83,10 +76,10 @@ export default function LeadForm() {
 
             <div>
               <span className="mb-2 block text-xs font-bold uppercase tracking-widest opacity-80">
-                Где удобнее связаться
+                {uiText.leadForm.channelLabel}
               </span>
               <div role="radiogroup" aria-label="Канал связи" className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                {channelOptions.map((o) => {
+                {calculatorContactChannelOptions.map((o) => {
                   const active = channel === o.value;
                   return (
                     <button
@@ -111,7 +104,7 @@ export default function LeadForm() {
 
             <label className="block">
               <span className="mb-2 block text-xs font-bold uppercase tracking-widest opacity-80">
-                Имя (необязательно)
+                {uiText.leadForm.nameLabel}
               </span>
               <input className={inputCls} autoComplete="given-name" {...register('name')} />
             </label>
@@ -121,7 +114,7 @@ export default function LeadForm() {
               disabled={isSubmitting}
               className="w-full bg-bg text-accent font-display uppercase tracking-wider py-4 text-sm motion-safe:transition hover:bg-bg/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bg focus-visible:ring-offset-2 focus-visible:ring-offset-accent disabled:opacity-60"
             >
-              {isSubmitting ? 'Отправляем…' : 'Получить расчёт'}
+              {isSubmitting ? uiText.common.submitSendingEllipsis : uiText.cta.getEstimate}
             </button>
 
             {serverError && <p className="text-sm font-bold">{serverError}</p>}

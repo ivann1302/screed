@@ -2,24 +2,27 @@ import nodemailer from 'nodemailer';
 
 let transporter: ReturnType<typeof nodemailer.createTransport> | null = null;
 
+function requireEnv(name: string): string {
+  const value = process.env[name];
+  if (!value) throw new Error(`${name} must be set`);
+  return value;
+}
+
 function getTransporter() {
   if (transporter) return transporter;
   transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
+    host: requireEnv('SMTP_HOST'),
     port: Number(process.env.SMTP_PORT ?? 465),
     secure: true,
-    auth: { user: process.env.SMTP_USER!, pass: process.env.SMTP_PASS! },
+    auth: { user: requireEnv('SMTP_USER'), pass: requireEnv('SMTP_PASS') },
   });
   return transporter;
 }
 
 export async function sendEmail({ subject, html }: { subject: string; html: string }): Promise<void> {
-  if (!process.env.SMTP_FROM || !process.env.SMTP_TO) {
-    throw new Error('SMTP_FROM and SMTP_TO must be set');
-  }
   await getTransporter().sendMail({
-    from: process.env.SMTP_FROM,
-    to: process.env.SMTP_TO,
+    from: requireEnv('SMTP_FROM'),
+    to: requireEnv('SMTP_TO'),
     subject,
     html,
   });

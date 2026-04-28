@@ -8,7 +8,7 @@ import QuizStep4 from './QuizStep4';
 import QuizStep5 from './QuizStep5';
 import type { Contact, QuizAnswers } from '@/lib/schemas';
 import { postLead } from '@/lib/lead';
-import { siteConfig } from '@/config/site';
+import { sectionTitles, siteConfig, uiText } from '@/config/site';
 import { LeadSuccess } from '@/components/LeadSuccess';
 import { SectionIndex } from '@/components/ui/SectionIndex';
 import { Button } from '@/components/ui/Button';
@@ -32,7 +32,7 @@ export default function Quiz() {
       setDone(contact);
       try { sessionStorage.setItem('leadSubmitted', '1'); } catch {}
     } catch {
-      setServerError('Не удалось отправить. Позвоните: ' + siteConfig.master.phone);
+      setServerError(uiText.quiz.serverErrorPrefix + siteConfig.master.phone);
     } finally {
       setSubmitting(false);
     }
@@ -43,7 +43,7 @@ export default function Quiz() {
       <div className="mx-auto max-w-2xl lg:max-w-4xl px-6 sm:px-10 lg:px-16">
         <SectionIndex
           icon={<Sparkles className="w-10 h-10 sm:w-12 sm:h-12" strokeWidth={2.5} />}
-          title="Подбор стяжки"
+          title={sectionTitles.quiz}
         />
 
         {done ? (
@@ -53,7 +53,7 @@ export default function Quiz() {
             <div className="h-1 w-full overflow-hidden bg-border">
               <div className="h-full bg-accent motion-safe:transition-[width] duration-300" style={{ width: `${(state.step - 1) * 25}%` }} />
             </div>
-            <div className="mt-3 text-xs uppercase tracking-widest text-muted">Шаг {state.step} из 5</div>
+            <div className="mt-3 text-xs uppercase tracking-widest text-muted">{uiText.quiz.stepLabel} {state.step} {uiText.quiz.totalLabel} 5</div>
 
             <div key={state.step} className="mt-8">
               {state.step === 1 && <QuizStep1 onAnswer={(v) => dispatch({ type: 'answer', field: 'roomType', value: v })} />}
@@ -65,11 +65,11 @@ export default function Quiz() {
 
             {state.step > 1 && state.step < 5 && (
               <div className="mt-6">
-                <Button variant="ghost" size="sm" onClick={() => dispatch({ type: 'back' })}>← Назад</Button>
+                <Button variant="ghost" size="sm" onClick={() => dispatch({ type: 'back' })}>{uiText.quiz.back}</Button>
               </div>
             )}
 
-            {serverError && <p className="mt-4 text-sm text-red-400">{serverError}</p>}
+            {serverError && <p className="mt-4 text-sm text-danger">{serverError}</p>}
           </div>
         )}
       </div>
