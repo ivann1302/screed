@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Menu, X, Phone } from 'lucide-react';
 import clsx from 'clsx';
 import { uiText, type SiteConfig } from '@/config/site';
+import { publicPath } from '@/lib/paths';
 
 type Props = { master: SiteConfig['master']; project: SiteConfig['project']; assets: SiteConfig['assets'] };
 type HeaderLink = SiteConfig['navLinks'][number];
@@ -30,7 +31,7 @@ export default function Header({ master, project, assets, links }: Props & { lin
           {/* Brand */}
           <div className="flex min-w-0 flex-shrink-0 items-center gap-3">
             <img
-              src={assets.logo}
+              src={publicPath(assets.logo)}
               alt=""
               aria-hidden="true"
               className="h-9 w-9 shrink-0 object-contain sm:h-10 sm:w-10"
@@ -108,7 +109,7 @@ export default function Header({ master, project, assets, links }: Props & { lin
         <div className="h-14 sm:h-16 flex items-center justify-between gap-4 px-4 sm:px-10 border-b-2 border-border">
           <div className="flex min-w-0 items-center gap-3">
             <img
-              src={assets.logo}
+              src={publicPath(assets.logo)}
               alt=""
               aria-hidden="true"
               className="h-9 w-9 shrink-0 object-contain"

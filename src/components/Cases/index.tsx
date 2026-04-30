@@ -1,6 +1,7 @@
 import { Camera } from 'lucide-react';
 import { sectionTitles, uiText, type SiteConfig } from '@/config/site';
 import { SectionIndex } from '@/components/ui/SectionIndex';
+import { publicPath } from '@/lib/paths';
 
 type Props = { cases: SiteConfig['cases'] };
 
@@ -18,7 +19,7 @@ export default function Cases({ cases }: Props) {
             <article key={c.title} className="grid overflow-hidden border-2 border-border bg-surface md:grid-cols-[0.95fr_1.05fr]">
               <div className="relative min-h-64 border-b-2 border-border md:border-b-0 md:border-r-2">
                 <img
-                  src={c.imageUrl}
+                  src={publicPath(c.imageUrl)}
                   alt={c.title}
                   loading="lazy"
                   className="absolute inset-0 h-full w-full object-cover"

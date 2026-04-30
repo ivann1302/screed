@@ -8,6 +8,7 @@ import { postLead } from '@/lib/lead';
 import { Button } from '@/components/ui/Button';
 import { Field, Input } from '@/components/ui/Field';
 import { uiText } from '@/config/site';
+import { pagePath } from '@/lib/paths';
 
 const cardSchema = contactSchema.extend({
   name: z.string().min(1, 'Введите имя').max(80),
@@ -147,7 +148,7 @@ export function ConsultationCard({
 
           <p className="text-[10px] text-muted text-center leading-relaxed">
             {uiText.consultation.consentPrefix}{' '}
-            <a href="/privacy/" className="underline hover:text-text">{uiText.common.privacyShort}</a>.
+            <a href={pagePath('/privacy/')} className="underline hover:text-text">{uiText.common.privacyShort}</a>.
           </p>
           {serverError && <p className="text-sm text-danger">{serverError}</p>}
         </form>

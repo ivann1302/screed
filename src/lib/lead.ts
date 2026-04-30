@@ -1,7 +1,9 @@
 import type { LeadPayload } from '@/lib/schemas';
 
+const leadEndpoint = import.meta.env.VITE_LEAD_ENDPOINT || '/api/lead';
+
 export async function postLead(payload: LeadPayload): Promise<{ ok: boolean; delivered?: string[] }> {
-  const res = await fetch('/api/lead', {
+  const res = await fetch(leadEndpoint, {
     method: 'POST',
     headers: { 'content-type': 'application/json' },
     body: JSON.stringify(payload),

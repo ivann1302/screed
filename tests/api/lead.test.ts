@@ -57,6 +57,24 @@ describe('POST /api/lead', () => {
     expect(sendVkMessage).toHaveBeenCalledOnce();
   });
 
+  it('supports Vercel node req/res shape', async () => {
+    const res = {
+      status: vi.fn(function status() { return res; }),
+      json: vi.fn(),
+    };
+    await handler(
+      {
+        method: 'POST',
+        headers: { 'x-forwarded-for': '5.5.5.6' },
+        body: validForm,
+      },
+      res,
+    );
+    expect(res.status).toHaveBeenCalledWith(200);
+    expect(res.json).toHaveBeenCalledWith(expect.objectContaining({ ok: true }));
+    expect(sendTelegramMessage).toHaveBeenCalledOnce();
+  });
+
   it('returns 200 if at least one channel succeeds', async () => {
     sendTelegramMessage.mockRejectedValueOnce(new Error('tg down'));
     sendVkMessage.mockRejectedValueOnce(new Error('vk down'));

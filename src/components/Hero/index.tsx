@@ -1,6 +1,7 @@
 import type { SiteConfig } from '@/config/site';
 import { Button } from '@/components/ui/Button';
 import { Stamp } from '@/components/ui/Stamp';
+import { publicPath } from '@/lib/paths';
 
 type Props = { hero: SiteConfig['hero']; master: SiteConfig['master']; minAreaM2: number; theme: SiteConfig['theme'] };
 
@@ -11,7 +12,7 @@ export default function Hero({ hero, master, minAreaM2, theme }: Props) {
       <div className="absolute inset-0">
         {hero.imageUrl ? (
           <img
-              src={hero.imageUrl}
+              src={publicPath(hero.imageUrl)}
               alt=""
               className="absolute inset-0 h-full w-full object-cover object-left-top"
               style={{ filter: 'grayscale(1) contrast(1.1)' }}

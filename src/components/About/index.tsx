@@ -1,6 +1,7 @@
 import { HardHat } from 'lucide-react';
 import type { SiteConfig } from '@/config/site';
 import { SectionIndex } from '@/components/ui/SectionIndex';
+import { publicPath } from '@/lib/paths';
 
 type Props = { about: SiteConfig['about']; master: SiteConfig['master']; imageUrl?: string };
 
@@ -16,7 +17,7 @@ export default function About({ about, master, imageUrl }: Props) {
           {imageUrl && (
             <div className="min-h-80 lg:col-span-5 lg:order-1">
               <img
-                src={imageUrl}
+                src={publicPath(imageUrl)}
                 alt={`${about.headline} — ${master.name}`}
                 className="h-full w-full border-2 border-border object-cover"
               />

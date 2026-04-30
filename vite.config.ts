@@ -6,11 +6,23 @@ import { siteConfig } from './src/config/site';
 const htmlConstants = {
   '%SITE_TITLE%': siteConfig.seo.title,
   '%SITE_DESCRIPTION%': siteConfig.seo.description,
-  '%SITE_OG_IMAGE%': siteConfig.seo.ogImage,
-  '%SITE_FAVICON%': siteConfig.assets.favicon,
+  '%SITE_OG_IMAGE%': withBase(siteConfig.seo.ogImage),
+  '%SITE_FAVICON%': withBase(siteConfig.assets.favicon),
 };
 
+function normalizeBase(base: string | undefined): string {
+  if (!base || base === '/') return '/';
+  return `/${base.replace(/^\/|\/$/g, '')}/`;
+}
+
+function withBase(pathname: string): string {
+  if (/^(https?:)?\/\//.test(pathname)) return pathname;
+  const base = normalizeBase(process.env.VITE_BASE_PATH);
+  return `${base.replace(/\/$/, '')}/${pathname.replace(/^\//, '')}`;
+}
+
 export default defineConfig({
+  base: normalizeBase(process.env.VITE_BASE_PATH),
   plugins: [
     react(),
     {

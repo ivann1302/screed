@@ -1,4 +1,5 @@
 import { uiText, type SiteConfig } from '@/config/site';
+import { pagePath, publicPath } from '@/lib/paths';
 
 type Props = { master: SiteConfig['master']; project: SiteConfig['project']; contacts: SiteConfig['contacts'] };
 
@@ -28,7 +29,7 @@ export default function Footer({ master, project, contacts }: Props) {
               aria-label="MAX"
               className="inline-flex h-12 w-12 items-center justify-center motion-safe:transition hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
             >
-              <img src="/icons/Max-icon.svg" alt="" aria-hidden="true" className="h-12 w-12 object-contain" />
+              <img src={publicPath('/icons/Max-icon.svg')} alt="" aria-hidden="true" className="h-12 w-12 object-contain" />
             </a>
           )}
           {contacts.telegram && (
@@ -37,7 +38,7 @@ export default function Footer({ master, project, contacts }: Props) {
               aria-label="Telegram"
               className="inline-flex h-12 w-12 items-center justify-center motion-safe:transition hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
             >
-              <img src="/icons/tg-icon.png" alt="" aria-hidden="true" className="h-12 w-12 object-contain" />
+              <img src={publicPath('/icons/tg-icon.png')} alt="" aria-hidden="true" className="h-12 w-12 object-contain" />
             </a>
           )}
           {contacts.whatsapp && (
@@ -46,14 +47,14 @@ export default function Footer({ master, project, contacts }: Props) {
               aria-label="WhatsApp"
               className="inline-flex h-12 w-12 items-center justify-center motion-safe:transition hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
             >
-              <img src="/icons/whatsappIcon.png" alt="" aria-hidden="true" className="h-12 w-12 object-contain" />
+              <img src={publicPath('/icons/whatsappIcon.png')} alt="" aria-hidden="true" className="h-12 w-12 object-contain" />
             </a>
           )}
         </div>
       </div>
       <div className="mt-10 mx-auto max-w-7xl px-6 sm:px-10 lg:px-16 flex flex-col sm:flex-row items-center sm:justify-between gap-3 text-xs text-muted text-center sm:text-left">
         <div>© {year} {master.name}. {uiText.footer.rights}</div>
-        <a href="/privacy/" className="hover:text-text/80 underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+        <a href={pagePath('/privacy/')} className="hover:text-text/80 underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
           {uiText.common.privacyFull}
         </a>
       </div>
